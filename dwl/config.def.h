@@ -174,16 +174,14 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "kitty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
-static const char *snip[] = {"snip", NULL };
 static const char *fman[] = { "thunar", NULL };
+
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
-	// { MODKEY,                    XKB_KEY_d,          spawn,          {.v = bemenucmd} },
 	{ MODKEY,                    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
-    { MODKEY,                    XKB_KEY_S,          spawn,          {.v = snip} },
 	{ MODKEY, 					 XKB_KEY_e,  		 spawn,			 {.v = fman} },
 	{ MODKEY, 					 XKB_KEY_b, 		 spawn, 		 SHCMD("xdg-open http://") },
 	{ MODKEY,					 XKB_KEY_m,			 spawn,			 SHCMD("quickmpv") },
