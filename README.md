@@ -8,8 +8,6 @@ filemanager of choice but thunar is default
 
 modify config.def.h to change your font, and file manager if you choose to.
 
-no idea why my screenshots are not working rn so no grim / slurp
-
 just remember to sudo make clean install in dwl and slstatus.
 
 
