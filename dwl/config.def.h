@@ -7,7 +7,7 @@
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
 static const int smartgaps                 = 1;  /* 1 means no outer gap when there is only one window */
-static int gaps                            = 0;  /* 1 means gaps between windows are added */
+static int gaps                            = 1;  /* 1 means gaps between windows are added */
 static const unsigned int gappx            = 3; /* gap pixel between windows */
 static const unsigned int borderpx         = 0;  /* border pixel of windows */
 static const int showbar                   = 1; /* 0 means no bar */
@@ -175,7 +175,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const char *termcmd[] = { "kitty", NULL };
 static const char *menucmd[] = { "rofi", "-show", "drun", NULL };
 static const char *fman[] = { "thunar", NULL };
-
+static const char *kanshi_restart[] = { "/bin/sh", "-c", "pkill kanshi; kanshi &", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
@@ -185,16 +185,21 @@ static const Key keys[] = {
 	{ MODKEY, 					 XKB_KEY_e,  		 spawn,			 {.v = fman} },
 	{ MODKEY, 					 XKB_KEY_b, 		 spawn, 		 SHCMD("xdg-open http://") },
 	{ MODKEY,					 XKB_KEY_m,			 spawn,			 SHCMD("quickmpv") },
+	{ MODKEY,					 XKB_KEY_v,			 spawn,			 SHCMD("cliphist-rofi") },
+	{ MODKEY,					 XKB_KEY_n,			 spawn,			 SHCMD("makoctl dismiss -a") },
+	{ MODKEY,					 XKB_KEY_a,			 spawn,			 SHCMD("define") },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_S,			 spawn,			 SHCMD("snip") },
+	{ MODKEY, 					 XKB_KEY_F5, 		 spawn, 		 {.v = kanshi_restart} },
 	{ MODKEY,                    XKB_KEY_Right,      focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_Left,       focusstack,     {.i = -1} },
-    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_r,          togglebar,      {0} },
+    { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_B,          togglebar,      {0} },
 	{ MODKEY,                    XKB_KEY_i,          incnmaster,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_p,          incnmaster,     {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,          setmfact,       {.f = -0.05f} },
 	{ MODKEY,                    XKB_KEY_l,          setmfact,       {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,     zoom,           {0} },
 	{ MODKEY,                    XKB_KEY_Tab,        view,           {0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_a,          togglegaps,     {0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_A,          togglegaps,     {0} },
 	{ MODKEY,                    XKB_KEY_q,          killclient,     {0} },
     { MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_t,			 setlayout, 	 {.v = &layouts[0]} },
     { MODKEY|WLR_MODIFIER_CTRL,  XKB_KEY_f,			 setlayout, 	 {.v = &layouts[1]} },
@@ -217,7 +222,7 @@ static const Key keys[] = {
 	TAGKEYS(          XKB_KEY_7, XKB_KEY_ampersand,                  6),
 	TAGKEYS(          XKB_KEY_8, XKB_KEY_asterisk,                   7),
 	TAGKEYS(          XKB_KEY_9, XKB_KEY_parenleft,                  8),
-	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Q,          quit,           {0} },
+	{ WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT, XKB_KEY_BackSpace,          quit,           {0} },
     { WLR_MODIFIER_CTRL|WLR_MODIFIER_ALT, XKB_KEY_p, spawn, 		 SHCMD("kitty -e powermenu") },
 
 	/* Ctrl-Alt-Backspace and Ctrl-Alt-Fx used to be handled by X server */
