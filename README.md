@@ -41,29 +41,16 @@ export GDK_BACKEND=wayland,x11,*
 export GDK_SCALE=1
 
 exec sh -c '
-    slstatus -s | dwl &
-    DWL_PID=$!
-
-    while [ ! -S "$XDG_RUNTIME_DIR/wayland-0" ]; do
-        sleep 0.2
-    done
-
-    ~/.config/dwl/autostart/set-res.sh
-
+slstatus -s | dwl -s "sh -c \"
+    ~/.config/dwl/autostart/set-res.sh &
     easyeffects --gapplication-service &
-
-    swaybg -m fill -i "$(cat ~/.config/hypr/wallpaper)" 
-
-    pgrep -x wl-paste >/dev/null || {
-        wl-paste --type image --watch cliphist store &
-        wl-paste --type text --watch cliphist store &
-    }
-
-    (sleep 5 && trash-empty 30 -f) &
-
-    systemctl --user start session-apps.service &
-
-    wait "$DWL_PID"
+    wl-paste --type image --watch cliphist store &
+    wl-paste --type text --watch cliphist store &
+    mako &
+	easyeffects &
+	kanshi &
+	(sleep 5 && trash-empty 30 -f) &
+    swaybg -m fill -i \\\"$(cat ~/.config/hypr/wallpaper)\\\"
+\""
 '
-
 ```
