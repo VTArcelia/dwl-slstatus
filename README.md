@@ -13,7 +13,7 @@ no idea why my screenshots are not working rn so no grim / slurp
 just remember to sudo make clean install in dwl and slstatus.
 
 
-id suggest after installing to make your own launcher for dwl to launch whatever you need similar to this, this allows you to use wayland-logout to just cleanly quit dwl, if you choose not to there is still the standard SUPER SHIFT Q to exit out of the session.
+id suggest after installing to make your own launcher for dwl to launch whatever you need similar to this, this allows you to use wayland-logout to just cleanly quit dwl (or whatever powermenu script you want), if you choose not to there is still CTRL ALT Backspace to exit out of the session.
 
 session-apps.service is swaync and kanshi, and easyeffects again since sometimes the --gapplication-service does not apply the eq but running it again separately without --gapplication-service does. really odd to me, but whatever.
 
