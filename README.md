@@ -1,19 +1,27 @@
-to be used with my dotfiles, to get scripts. you really dont even need that much.
+Minimal Packages:
 
-wayland wayland-protocols wlroots_0_19 base-devel git rofi kitty wl-clipboard swaybg thunar xorg-xwayland 
+```
+wayland wayland-protocols wlroots_0_19 base-devel git rofi kitty wl-clipboard grim slurp swaybg thunar mako xorg-xwayland otf-departure-mono-nerd
+```
+changes you can do: 
 
-font of choice, browser of choice, browser isnt specified since we xdg-open http:// so it just opens whatever your default is.
+browser of choice, browser isnt specified since we xdg-open http:// so it just opens whatever your default is
 
-filemanager of choice but thunar is default
+we use mako as swaync for some reason breaks after opening it a single time no matter what I have tried
 
-modify config.def.h to change your font, and file manager if you choose to.
+modify config.def.h to change your font, file manager, app launcher. and terminal if you want to
 
-just remember to sudo make clean install in dwl and slstatus.
+-------------
 
+What I am using from my dotfiles:
 
-id suggest after installing to make your own launcher for dwl to launch whatever you need similar to this, this allows you to use wayland-logout to just cleanly quit dwl (or whatever powermenu script you want), if you choose not to there is still CTRL ALT Backspace to exit out of the session.
+```
+stow -R kanshi kitty mako mpv nvim rofi scripts shell yazi zsh
+```
 
-session-apps.service is swaync and kanshi, and easyeffects again since sometimes the --gapplication-service does not apply the eq but running it again separately without --gapplication-service does. really odd to me, but whatever.
+sudo make clean install in both dwl and slstatus
+
+id suggest after installing to make your own start_dwl script to launch whatever you need similar to this, and make it so your login manager like ly or sddm can use it
 
 
 ```
