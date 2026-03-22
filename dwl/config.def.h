@@ -180,6 +180,7 @@ static const char *kanshi_restart[] = { "/bin/sh", "-c", "pkill kanshi; kanshi &
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: c -> C, 2 -> at, etc. */
 	/* modifier                  key                 function        argument */
+    { MODKEY,					 XKB_KEY_slash,		 spawn,			 SHCMD("rofi -dmenu -i -p 'DWL Cheatsheet' < ~/Keybind-Sheet") },
 	{ MODKEY,                    XKB_KEY_d,          spawn,          {.v = menucmd} },
 	{ MODKEY,                    XKB_KEY_Return,     spawn,          {.v = termcmd} },
 	{ MODKEY, 					 XKB_KEY_e,  		 spawn,			 {.v = fman} },
