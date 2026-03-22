@@ -1,0 +1,57 @@
+DWL Keybind Cheatsheet (Super + /)
+
+Window Management
+-----------------
+Enter                  → Open terminal (kitty)
+d                      → Launch application menu (rofi -show drun)
+e                      → Open file manager (thunar)
+b                      → Open browser (xdg-open http://)
+m                      → Quick Launch Mpv player with highlighted/copied link (quickmpv)
+v                      → Clipboard manager (cliphist-rofi)
+n                      → Dismiss notifications (makoctl dismiss -a)
+a                      → Define word (define)
+Shift + S              → Screenshot region (snip)
+F5                     → Restart kanshi & enable adaptive-sync
+Right                  → Focus next window
+Left                   → Focus previous window
+Shift + B              → Toggle status bar
+i                      → Increase master area windows
+p                      → Decrease master area windows
+h                      → Shrink window horizontally
+l                      → Expand window horizontally
+Return                 → Zoom window
+Tab                    → Switch to previous workspace
+Shift + A              → Toggle gaps
+q                      → Close focused window
+f                      → Toggle fullscreen
+Ctrl + Space           → Set previous layout
+Ctrl + t/f/m           → Set tiling / floating / monocle layout
+Shift + Space          → Toggle floating
+0                      → View all Workspaces / tags
+Shift + )              → Tag all windows
+,                      → Focus monitor left
+.                      → Focus monitor right
+Shift + <              → Move window to left monitor
+Shift + >              → Move window to right monitor
+
+Workspaces / Tags
+-----------------
+1..9                   → Switch to workspace 1..9
+Shift + 1..9           → Move focused window to workspace 1..9
+Ctrl + 1..9             → Toggle workspace view
+Ctrl + Shift + 1..9    → Toggle window tag on workspace
+
+Power / System
+--------------
+Ctrl + Alt + p          → Power menu (kitty -e powermenu)
+Ctrl + Alt + Backspace  → Quit DWL
+Ctrl + Alt + Fx         → Switch VT (1..12)
+
+Mouse
+-----
+Left click on layout symbol  → Set layout
+Right click on layout symbol → Set layout
+Middle click on title bar     → Swap windows around (zoom)
+Middle click on DISK/RAM/CPU/TIME    → Open terminal
+Super + click on client       → Move/resize window (Left = move, Right = resize, Middle = toggle floating)
+Click on tag bar               → Switch/toggle tags
