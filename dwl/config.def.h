@@ -191,7 +191,7 @@ static const Key keys[] = {
 	{ MODKEY,					 XKB_KEY_a,			 spawn,			 SHCMD("define") },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_S,			 spawn,			 SHCMD("snip") },
 	{ MODKEY, 					 XKB_KEY_F5, 		 spawn, 		 {.v = kanshi_restart} },
-	{ MODKEY,					 XKB_KEY_period,	 spawn,			 SHCMD("wiremix") },
+	{ MODKEY,					 XKB_KEY_period,	 spawn,			 SHCMD("kitty -e wiremix") },
 	{ MODKEY,                    XKB_KEY_Right,      focusstack,     {.i = +1} },
 	{ MODKEY,                    XKB_KEY_Left,       focusstack,     {.i = -1} },
     { MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_B,          togglebar,      {0} },
