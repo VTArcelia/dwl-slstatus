@@ -23,12 +23,13 @@ sudo make clean install in both dwl and slstatus
 
 id suggest after installing to make your own start_dwl script to launch whatever you need similar to this, and make it so your login manager like ly or sddm can use it
 
+Exec=/bin/sh -c "slstatus -s | dwl -s /home/user/dwl-startup.sh"
 
 ```
 #!/bin/sh
 
-export XDG_CURRENT_DESKTOP=DWL
-export XDG_SESSION_DESKTOP=DWL
+export XDG_CURRENT_DESKTOP=wlroots
+export XDG_SESSION_DESKTOP=wlroots
 export XDG_SESSION_TYPE=wayland
 
 export QT_QPA_PLATFORM=wayland
@@ -36,7 +37,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
 
-export ELECTRON_OZONE_PLATFORM_HINT=auto
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export LIBVA_DRIVER_NAME=nvidia
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export NVD_BACKEND=direct
@@ -45,20 +46,27 @@ export MOZ_ENABLE_WAYLAND=1
 export MOZ_DISABLE_RDD_SANDBOX=1
 export EGL_PLATFORM=wayland
 export CLUTTER_BACKEND=wayland
-export GDK_BACKEND=wayland,x11,*
+export GDK_BACKEND=wayland,x11
 export GDK_SCALE=1
 
-exec sh -c '
-slstatus -s | dwl -s "sh -c \"
-    ~/.config/dwl/autostart/set-res.sh &
-    easyeffects --gapplication-service &
-    wl-paste --type image --watch cliphist store &
-    wl-paste --type text --watch cliphist store &
-    mako &
-	easyeffects &
-	kanshi &
-	(sleep 5 && trash-empty 30 -f) &
-    swaybg -m fill -i \\\"$(cat ~/.config/hypr/wallpaper)\\\"
-\""
-'
+export __GL_VRR_ALLOWED=1
+export __GL_GSYNC_ALLOWED=1
+export MANGOHUD=1
+export MANGOHUD_DLSYM=1
+
+systemctl --user start hyprpolkitagent
+
+~/.config/dwl/autostart/adaptivesync.sh &
+easyeffects --gapplication-service &
+easyeffects &
+wl-paste --type image --watch cliphist store &
+wl-paste --type text --watch cliphist store &
+mako &
+kanshi &
+(sleep 5 && trash-empty 30 -f) &
+
+swaybg -m fill -i "$(cat ~/.config/hypr/wallpaper)" &
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=wlroots
+
 ```
