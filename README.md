@@ -23,7 +23,9 @@ sudo make clean install in both dwl and slstatus
 
 id suggest after installing to make your own start_dwl script to launch whatever you need similar to this, and make it so your login manager like ly or sddm can use it
 
-Exec=/bin/sh -c "slstatus -s | dwl -s /home/user/dwl-startup.sh"
+for this setup having the following in your .desktop is enough otherwise you just run what's in the " "'s. obviously the contents of the script will be very different.
+
+Exec=/bin/sh -c "slstatus -s | dwl -s /home/YOURUSERNAME/dwl-startup.sh"
 
 ```
 #!/bin/sh
